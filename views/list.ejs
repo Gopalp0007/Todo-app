@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function confirmDelete(id) {
+      if (confirm("Are you sure you want to delete this task?")) {
+        document.getElementById("deleteForm-" + id).submit();
+      }
+    }
+  </script>
+</head>
+<body>
+ 
+  <header>
+    <h1>My To-Do List</h1>
+  </header>
+
+  <main>
+    <div class="box">
+      <!-- Add Task -->
+      <form action="/add" method="POST">
+        <input type="text" name="ele1" placeholder="New Task">
+        <button type="submit">Add</button>
+      </form>
+
+      <!-- Task List -->
+      <ul>
+        <% items.forEach((item) => { %>
+          <li>
+            <!-- Toggle -->
+            <form action="/toggle" method="POST" style="display:inline;">
+              <input type="hidden" name="id" value="<%= item._id %>">
+              <button type="submit"><%= item.done ? "✅" : "⬜" %></button>
+            </form>
+
+            <!-- Task Text -->
+            <span style="<%= item.done ? 'text-decoration: line-through; color: gray;' : '' %>">
+              <%= item.text %>
+            </span>
+
+            <!-- Edit -->
+            <form action="/edit" method="POST" style="display:inline;">
+              <input type="hidden" name="id" value="<%= item._id %>">
+              <input type="text" name="newText" placeholder="Edit task">
+              <button type="submit">✏️</button>
+            </form>
+
+            <!-- Delete -->
+            <form id="deleteForm-<%= item._id %>" action="/delete" method="POST" style="display:inline;">
+              <input type="hidden" name="id" value="<%= item._id %>">
+              <button class="delete-btn" type="button" onclick="confirmDelete('<%= item._id %>')">🗑</button>
+            </form>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+  </main>
+
+ 
+  <footer>
+    <p>© 2025 To-Do App | All Right Reserved</p>
+  </footer>
+</body>
+</html>

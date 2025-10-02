@@ -1,0 +1,160 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f6f9;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  width: 100%;
+  background: #3a4b57;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  background: #28323a;
+  color: white;
+  text-align: center;
+  padding: 12px 0;
+  margin-top: auto;   /* pushes footer to bottom */
+  font-size: 0.9rem;
+}
+
+/* Main content centered */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+/* Box */
+.box {
+  background: #fff;
+  width: 90%;
+  max-width: 600px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Add task form */
+.box form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.box form input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.box form button {
+  padding: 10px 15px;
+  border: none;
+  background: #263541;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.box form button:hover {
+  background: #005fa3;
+}
+
+/* Task list */
+ul {
+  list-style: none;
+  margin-top: 10px;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+li span {
+  flex: 1;
+  word-break: break-word;
+}
+
+/* Inside list forms */
+li form {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+}
+
+li input[type="text"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Buttons */
+li button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+li button[type="submit"] {
+  background: #111314;
+  color: white;
+}
+
+li button[type="submit"]:hover {
+  background: #1c2a33;
+}
+
+li button.delete-btn {
+  background: #e63946;
+  color: white;
+}
+
+li button.delete-btn:hover {
+  background: #c92c38;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .box form {
+    flex-direction: column;
+  }
+  
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
